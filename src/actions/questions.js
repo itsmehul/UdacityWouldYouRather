@@ -1,32 +1,53 @@
 import { saveQuestion, saveQuestionAnswer } from '../utils/api'
-// import { showLoading, hideLoading } from 'react-redux-loading'
+import { showLoading, hideLoading } from 'react-redux-loading'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
-export const TOGGLE_TWEET = 'TOGGLE_TWEET'
 export const ADD_QUESTION = 'ADD_QUESTION'
+export const ADD_QUESTION_ANSWER = 'ADD_QUESTION_ANSWER'
 
-// function saveQuestion (tweet) {
-//   return {
-//     type: ADD_QUESTION,
-//     tweet,
-//   }
-// }
+function addQuestion (question) {
+  return {
+    type: ADD_QUESTION,
+    question
+  }
+}
+
+function addQuestionAnswer (answer) {
+    return {
+      type: ADD_QUESTION_ANSWER,
+      answer
+    }
+  }
 
 export function handleSaveQuestion (text, replyingTo) {
   return (dispatch, getState) => {
     const { authedUser } = getState()
 
-    // dispatch(showLoading())
+    dispatch(showLoading())
 
-    return saveQuestionAnswer({
+    return saveQuestion({
       text,
       author: authedUser,
       replyingTo
     })
-      .then((tweet) => dispatch(saveQuestion(tweet)))
-    //   .then(() => dispatch(hideLoading()))
+      .then((tweet) => dispatch(addQuestion(tweet)))
+      .then(() => dispatch(hideLoading()))
   }
 }
+
+export function handleSaveQuestionAnswer (qid, answer) {
+    return (dispatch, getState) => {
+      const { authedUser } = getState()
+      dispatch(addQuestionAnswer({authedUser,qid,answer}))        
+      dispatch(showLoading()) 
+      return saveQuestionAnswer({
+        authedUser,
+        qid,
+        answer
+      })
+        .then(() => dispatch(hideLoading()))
+    }
+  }
 
 export function receiveQuestions (questions) {
   return {
