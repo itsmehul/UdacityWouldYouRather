@@ -5,12 +5,12 @@ export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const TOGGLE_TWEET = 'TOGGLE_TWEET'
 export const ADD_QUESTION = 'ADD_QUESTION'
 
-function saveQuestion (tweet) {
-  return {
-    type: ADD_QUESTION,
-    tweet,
-  }
-}
+// function saveQuestion (tweet) {
+//   return {
+//     type: ADD_QUESTION,
+//     tweet,
+//   }
+// }
 
 export function handleSaveQuestion (text, replyingTo) {
   return (dispatch, getState) => {
@@ -28,10 +28,10 @@ export function handleSaveQuestion (text, replyingTo) {
   }
 }
 
-export function receiveQuestions (tweets) {
+export function receiveQuestions (questions) {
   return {
     type: RECEIVE_QUESTIONS,
-    tweets,
+    questions,
   }
 }
 

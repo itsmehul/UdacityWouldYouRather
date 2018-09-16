@@ -9,7 +9,7 @@ import {
     return Promise.all([
       _getQuestions(),
       _getUsers(),
-    ]).then(([users, questions]) => ({
+    ]).then(([questions, users]) => ({
       users,
       questions,
     }))
