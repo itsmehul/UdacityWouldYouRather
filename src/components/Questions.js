@@ -17,13 +17,13 @@ class Questions extends Component {
           {this.state.showAnswered === true &&
             this.props.answeredQs.map(id => (
               <li key={id}>
-                <Question id={id} />
+                <Question answered={true} id={id} />
               </li>
             ))}
           {this.state.showAnswered === false &&
             this.props.unansweredQs.map(id => (
               <li key={id}>
-                <Question id={id} />
+                <Question answered={false} id={id} />
               </li>
             ))}
         </ul>
