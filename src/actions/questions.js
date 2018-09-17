@@ -19,18 +19,18 @@ function addQuestionAnswer (answer) {
     }
   }
 
-export function handleSaveQuestion (text, replyingTo) {
+export function handleSaveQuestion (optionOneText, optionTwoText) {
   return (dispatch, getState) => {
     const { authedUser } = getState()
 
     dispatch(showLoading())
 
     return saveQuestion({
-      text,
       author: authedUser,
-      replyingTo
+      optionOneText,
+      optionTwoText
     })
-      .then((tweet) => dispatch(addQuestion(tweet)))
+      .then((qs) => dispatch(addQuestion(qs)))
       .then(() => dispatch(hideLoading()))
   }
 }

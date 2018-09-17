@@ -6,6 +6,7 @@ import LoadingBar from 'react-redux-loading'
 import Questions from "./Questions";
 import Nav from './Nav'
 import QuestionPage from './QuestionPage';
+import NewQuestion from './NewQuestion';
 
 class App extends Component {
   componentDidMount() {
@@ -25,7 +26,7 @@ class App extends Component {
               : <div>
                   <Route path='/' exact component={Questions} />
                   <Route path='/question/:id' component={QuestionPage} />
-                  {/* <Route path='/new' component={NewQuestion} /> */}
+                  <Route path='/new' component={NewQuestion} />
                 </div>}
           </div>
         </Fragment>

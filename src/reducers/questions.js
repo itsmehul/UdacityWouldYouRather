@@ -1,4 +1,4 @@
-import { RECEIVE_QUESTIONS, ADD_QUESTION_ANSWER } from "../actions/questions";
+import { RECEIVE_QUESTIONS, ADD_QUESTION_ANSWER, ADD_QUESTION } from "../actions/questions";
 
 export default function questions(state = {}, action) {
   switch (action.type) {
@@ -12,8 +12,6 @@ export default function questions(state = {}, action) {
       const question = state[answer.qid];
       const votes1 = question.optionOne.votes
       const votes2 = question.optionTwo.votes
-      console.log(votes1);
-      console.log(votes2);
       
       
       return {
@@ -38,24 +36,24 @@ export default function questions(state = {}, action) {
         }
       };
 
-    // case ADD_QUESTION :
-    //   const { tweet } = action
-
-    //   let replyingTo = {}
-    //   if (tweet.replyingTo !== null) {
-    //     replyingTo = {
-    //       [tweet.replyingTo]: {
-    //         ...state[tweet.replyingTo],
-    //         replies: state[tweet.replyingTo].replies.concat([tweet.id])
-    //       }
-    //     }
-    //   }
-
-    //   return {
-    //     ...state,
-    //     [action.tweet.id]: action.tweet,
-    //     ...replyingTo,
-    //   }
+    case ADD_QUESTION :  
+    const addAns1 = action.question.optionOne.text;  
+    const addAns2 = action.question.optionOne.text;  
+    
+    const questionstate = action.question;
+    
+      return {
+          ...state,
+          [questionstate.id]:{
+            ...questionstate,
+            optionOne:{
+              ...questionstate.id.optionOne,
+              text:addAns1},
+            optionTwo:{
+              ...questionstate.id.optionTwo,
+              text:addAns2}
+          }
+      }
     default:
       return state;
   }
