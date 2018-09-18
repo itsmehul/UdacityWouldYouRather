@@ -55,6 +55,9 @@ class QuestionPage extends Component {
 function mapStateToProps({ questions, users, authedUser }, props) {
   const { id } = props.match.params;
   const {answered} = props.location.state
+  console.log(users);
+
+  
   return {
     question: questions[id],
     author: users[questions[id].author],

@@ -38,8 +38,7 @@ export default function questions(state = {}, action) {
 
     case ADD_QUESTION :  
     const addAns1 = action.question.optionOne.text;  
-    const addAns2 = action.question.optionOne.text;  
-    
+    const addAns2 = action.question.optionTwo.text;  
     const questionstate = action.question;
     
       return {
@@ -47,10 +46,10 @@ export default function questions(state = {}, action) {
           [questionstate.id]:{
             ...questionstate,
             optionOne:{
-              ...questionstate.id.optionOne,
+              ...questionstate.optionOne,
               text:addAns1},
             optionTwo:{
-              ...questionstate.id.optionTwo,
+              ...questionstate.optionTwo,
               text:addAns2}
           }
       }
