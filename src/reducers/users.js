@@ -1,5 +1,5 @@
 import { RECEIVE_USERS } from "../actions/users";
-import { ADD_QUESTION_ANSWER, ADD_QUESTION } from "../actions/questions";
+import { ADD_QUESTION_ANSWER, ADD_QUESTION, GET_SCORE } from "../actions/questions";
 import authedUser from "./authedUser";
 
 export default function users(state = {}, action) {
