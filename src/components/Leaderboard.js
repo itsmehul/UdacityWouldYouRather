@@ -7,7 +7,7 @@ class Leaderboard extends Component {
   render() {
     
 const users = Object.values(this.props.users).sort((a, b)=>((Object.keys(b.answers).length+Object.keys(b.questions).length)-(Object.keys(a.answers).length+Object.keys(a.questions).length)));
-console.log(users);
+
 
 
 const Leaderboard = users.map(({avatarURL,answers,questions,name})=>{

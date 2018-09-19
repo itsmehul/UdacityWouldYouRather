@@ -10,8 +10,12 @@ import NewQuestion from './NewQuestion';
 import Leaderboard from './Leaderboard';
 
 class App extends Component {
+  state = {
+    authorized:false
+  }
   componentDidMount() {
-    this.props.dispatch(handleInitialData());
+    let data = 'hi'
+    this.props.dispatch(handleInitialData(data));
   }
 
   render() {
@@ -22,6 +26,7 @@ class App extends Component {
           <LoadingBar />
           <div className='container'>
             <Nav />
+            {}
             {this.props.loading === true
               ? null
               : <div>

@@ -6,8 +6,10 @@ import { setAuthedUser } from '../actions/authedUser'
 
 const AUTHED_ID = 'tylermcginnis'
 
-export function handleInitialData () {
+export function handleInitialData (data) {
   return (dispatch) => {
+    console.log(data);
+    
     // dispatch(showLoading())
     return getInitialData()
       .then(({ users, questions }) => { 
