@@ -21,10 +21,6 @@ class App extends Component {
     this.props.dispatch(handleInitialData());
   }
 
-  isAuthenticated() {
-    return this.props.authedUser === null;
-  }
-
   render() {
     console.log(this.props.loading);
     
@@ -33,13 +29,12 @@ class App extends Component {
         <Fragment>
           <LoadingBar />
           <div className="container">
-            <Nav />
+            <Nav isAuthenticated={this.props.loading} authedUser={this.props.authedUser}/>
               <Switch>
                 <Route path="/" exact render={()=>(!this.props.loading ? <Questions /> : <Redirect to='/login' />)} />
                 <Route path="/question/:id" render={(props)=>(!this.props.loading ? <QuestionPage props={props}/> : <Redirect to='/login' />)} />
-                {/* <Route path="/question/:id" component={QuestionPage} /> */}
                 <Route path="/new" render={()=>(!this.props.loading ? <NewQuestion /> : <Redirect to='/login' />)} />
-                <Route path="/leaderboard" component={Leaderboard} />
+                <Route path="/leaderboard" render={()=>(!this.props.loading ? <Leaderboard /> : <Redirect to='/login' />)} />
                 <Route path="/login" exact component={Login} />
               </Switch>
           </div>
@@ -51,7 +46,8 @@ class App extends Component {
 
 function mapStateToProps({ authedUser }) {
   return {
-    loading: authedUser === null
+    loading: authedUser === null,
+    authedUser
   };
 }
 

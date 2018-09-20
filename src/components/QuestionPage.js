@@ -39,7 +39,7 @@ class QuestionPage extends Component {
             <form onSubmit={this.submitAns}>
               <input type="radio" name="ans" value="1" onChange={() => this.setState({ answer: "optionOne" })} checked={this.state.answer === "optionOne"} /> {optionOne.text}<br/>
               <input type="radio" name="ans" value="2" onChange={() => this.setState({ answer: "optionTwo" })} checked={this.state.answer === "optionTwo"} /> {optionTwo.text}<br/>
-              <button type="submit" >Submit Ans</button>
+              <button type="submit" onClick={() => this.setState({ showResults: !this.state.showResults })}>Submit Ans</button>
             </form>
             <button onClick={() => this.setState({ showResults: !this.state.showResults })}>Show Results</button>
           </React.Fragment>)
