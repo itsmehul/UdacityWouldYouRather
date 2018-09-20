@@ -39,7 +39,8 @@ class App extends Component {
             <Nav />
               <Switch>
                 <Route path="/" exact render={()=>(!this.props.loading ? <Questions /> : <Redirect to='/login' />)} />
-                <Route path="/question/:id" render={()=>(!this.props.loading ? <QuestionPage /> : <Redirect to='/login' />)} />
+                <Route path="/question/:id" render={(props)=>(!this.props.loading ? <QuestionPage props={props}/> : <Redirect to='/login' />)} />
+                {/* <Route path="/question/:id" component={QuestionPage} /> */}
                 <Route path="/new" render={()=>(!this.props.loading ? <NewQuestion /> : <Redirect to='/login' />)} />
                 <Route path="/leaderboard" component={Leaderboard} />
                 <Route path="/login" exact component={Login} />

@@ -52,10 +52,11 @@ class QuestionPage extends Component {
   }
 }
 
-function mapStateToProps({ questions, users, authedUser }, props) {
+function mapStateToProps({ questions, users, authedUser }, {props}) {
+  console.log(props);
+
   const { id } = props.match.params;
   const {answered} = props.location.state
-  console.log(users);
 
   
   return {
