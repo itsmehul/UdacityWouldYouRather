@@ -29,7 +29,7 @@ class App extends Component {
         <Fragment>
           <LoadingBar />
           <div className="container">
-            <Nav isAuthenticated={this.props.loading} authedUser={this.props.authedUser}/>
+            <Nav isAuthenticated={this.props.loading} authedUser={this.props.authedUser} dispatch={this.props.dispatch}/>
               <Switch>
                 <Route path="/" exact render={()=>(!this.props.loading ? <Questions /> : <Redirect to='/login' />)} />
                 <Route path="/question/:id" render={(props)=>(!this.props.loading ? <QuestionPage props={props}/> : <Redirect to='/login' />)} />
@@ -44,10 +44,13 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser,users }) {
+  console.log(users.authedUser)
   return {
     loading: authedUser === null,
-    authedUser
+    authedUser:authedUser
+    ?users[authedUser].name
+    :null
   };
 }
 
