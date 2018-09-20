@@ -16,32 +16,21 @@ a {
   padding: 10px;
 }
 
-.btn {
-  text-transform: uppercase;
-  margin: 35px auto;
-  padding: 10px;
-  border: 1px solid rgba(0,0,0,.29);
-  cursor: pointer;
-  background: #fff;
-  font-size: 16px;
-  width: 250px;
-  position: relative;
-}
-
-.btn:hover {
-  border-color: rgba(0,0,0,.5);
-  text-decoration: none;
-}
-
-.btn:focus {
-  outline: 0;
-  font-weight: 700;
-  border-width: 2px;
-}
-
 .center {
   text-align: center;
 }
+
+/* Leaderboard */
+.card{ width: 500px; height: auto; background-color: rgb(242, 245, 247); box-shadow: 0 5px 5px #252525; display: grid; grid-template-areas: "header header" "avatar optionOne" "avatar optionTwo" "avatar score"; grid-gap: 1em; } .card>.header{ grid-area: header; font-weight: 700; font-style:italic } .card>.avatar{ grid-area: avatar; } .card>.optionOne{ grid-area: optionOne; font-style: italic } .card>.optionTwo{ grid-area: optionTwo; font-style: italic } .card>.score{ grid-area: score; background-color: black; color: white } .leaderboard{ display: grid; grid-template-rows: auto; grid-template-columns: 1fr; grid-gap: 2em; justify-items: center }
+
+/* Login */
+.login{ display: grid; grid-template-rows: auto; grid-template-columns: 1fr; justify-content: center; margin: 170px; padding: 30px; background-color: aquamarine } .questions{ display: grid; grid-template-areas:  "questionstitle" "choice" "question"; grid-gap: 20px; justify-content: center; } .questionstitle{ grid-area: questiontitle; } .choice{ grid-area: choice; } .question{ grid-area: question; display: grid; grid-template-columns: 1fr; grid-template-rows: auto; grid-gap: 30px; } .questionli{ background-color: antiquewhite }
+
+/* New Question */
+.newqs{ display: grid; grid-template-areas:  "txb1" "or" "txb2" "newqsbutton"; justify-content: center; grid-gap: 20px; } .newqstitle{ grid-area: newqstitle; } .txb1{ grid-area: txb1; } .txb2{ grid-area: txb2; } .or{ grid-area: or; /* width: 40px; */ } .newqsbutton{ grid-area: newqsbutton; }
+
+/* Questions Page */
+.QP{ display: grid; justify-content: center; grid-template-areas: "QPtitle QPtitle" "QPheader QPbody"; grid-gap: 20px; } .QPtitle{ grid-area: QPtitle; } .QPheader{ grid-area: QPheader; align-self: center; } .QPbody{ grid-area: QPbody; }
 
 .active {
   font-weight: bold;
@@ -69,95 +58,7 @@ li {
 }
 
 .avatar {
-  height: 50px;
-  border-radius: 25px;
-  margin: 10px;
+  clip-path: circle(60px at center);
+  width: 80%;
 }
 
-.tweet {
-  width: 100%;
-  max-width: 590px;
-  padding: 10px;
-  display: flex;
-  margin: 0 auto;
-  border: 1px solid #dad7d7;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.tweet-info {
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Hacky but less typing in the video */
-.tweet-info > div > span:first-child {
-  font-weight: bold;
-  margin-right: 5px;
-}
-.tweet-info > div > span:nth-child(2) {
-  color: #969696;
-  font-size: 16px;
-}
-.tweet-info > div > div {
-  color: #969696;
-  font-size: 15px;
-}
-.tweet-info > div > p {
-  font-size: 18px;
-  margin: 10px 0;
-}
-.tweet-icons {
-  display: flex;
-  align-items: center;
-}
-.tweet-icons > span {
-  color: #969696;
-  margin: 0 15px 0 5px;
-  font-size: 18px !important;
-}
-.tweet-icon {
-  font-size: 27px;
-  color: #697784;
-}
-.tweet-icon:hover {
-  color: #00b5d6;
-  cursor: pointer;
-}
-.replying-to {
-  border: none;
-  background: transparent;
-  margin: 0;
-  padding: 0;
-  color: #969696;
-  cursor: pointer;
-}
-
-.heart-button {
-  background: transparent;
-  border: none;
-}
-
-.new-tweet {
-  width: 100%;
-  max-width: 590px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.textarea {
-  border-radius: 4px;
-  border: 1px solid #dad7d7;
-  padding: 10px;
-  font-size: 15px;
-  height: 100px;
-}
-
-.tweet-length {
-  text-align: right;
-  margin-top: 10px;
-  font-size: 20px;
-  color: #C3392A;
-}

@@ -20,11 +20,10 @@ class Login extends Component {
       console.log(this.props.authedUser);
       
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <h3>
-            {this.state.authedUser ? this.state.authedUser : "select a user"}
-          </h3>
+        <form className="login" onSubmit={this.handleSubmit}>
+          <h1>
+            {this.state.authedUser ? this.state.authedUser :"Username"}
+          </h1>
           <select onChange={e => this.setState({ authedUser: e.target.value })}>
             <option value=""> select user </option>
             {Object.keys(this.props.users).map((user, key) => (
@@ -42,7 +41,6 @@ class Login extends Component {
             Submit
           </button>
         </form>
-      </div>
     );
   }
 }

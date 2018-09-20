@@ -10,11 +10,13 @@ class Question extends Component {
     const { avatarURL, name } = this.props.author;
   
     return (
-        <Link to={{ pathname:`/question/${this.props.id}`, state:{answered:`${this.props.answered}`}}}  className='tweet'>
+        <Link to={{ pathname:`/question/${this.props.id}`, state:{answered:`${this.props.answered}`}}}>
+        <li className="questionli">
         <img src={avatarURL} alt={`Avatar of ${name}`} className="avatar" />
         <div>{formatDate(timestamp)}</div>
         <h1>{name}</h1>
         <h2>..{optionOne.text.substr(3, 7)}..</h2>
+        </li>
       </Link>
     );
   }

@@ -42,25 +42,30 @@ class NewQuestion extends Component {
 
     return (
       <div>
-        <h3 className="center">Add new Question</h3>
-        <form className="new-tweet" onSubmit={this.handleSubmit}>
+        <h3 className="center">Would you rather...</h3>
+        <form className="newqs" onSubmit={this.handleSubmit}>
           <textarea
+                      width="200px"
+                      height="100px"
             placeholder="What's happening?"
             value={optionOne}
             onChange={this.handleOptionOne}
-            className="textarea"
+            className="txb1"
             maxLength={280}
           />
-          {optionOneTextLength <= 100 && <div className="tweet-length">{optionOneTextLength}</div>}
+          {/* {optionOneTextLength <= 100 && <div className="tweet-length">{optionOneTextLength}</div>} */}
+          <h1 className="or">or</h1>
            <textarea
+            width="200px"
+            height="100px"
             placeholder="What's happening?"
             value={optionTwo}
             onChange={this.handleOptionTwo}
-            className="textarea"
+            className="txb2"
             maxLength={280}
           />
-          {optionTwoTextLength <= 100 && <div className="tweet-length">{optionTwoTextLength}</div>}
-          <button className="btn" type="submit" disabled={optionOne === ""||optionTwo === ""}>
+          {/* {optionTwoTextLength <= 100 && <div className="tweet-length">{optionTwoTextLength}</div>} */}
+          <button className="newqsbutton" type="submit" disabled={optionOne === ""||optionTwo === ""}>
             Submit
           </button>
         </form>
