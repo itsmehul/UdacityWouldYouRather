@@ -10,10 +10,10 @@ const users = Object.values(this.props.users).sort((a, b)=>((Object.keys(b.answe
 
 
 
-const Leaderboard = users.map(({avatarURL,answers,questions,name})=>{
+const Leaderboard = users.map(({avatarURL,answers,questions,name},key)=>{
     const score = Object.keys(answers).length+questions.length
 return(
-<div>
+<div key={key}>
     <img src={avatarURL}/>
     <h1>{name}</h1>
     <h2>Questions Created: {questions.length}</h2>
