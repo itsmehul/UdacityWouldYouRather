@@ -1,6 +1,5 @@
 import { RECEIVE_USERS } from "../actions/users";
-import { ADD_QUESTION_ANSWER, ADD_QUESTION, GET_SCORE } from "../actions/questions";
-import authedUser from "./authedUser";
+import { ADD_QUESTION_ANSWER, ADD_QUESTION} from "../actions/questions";
 
 export default function users(state = {}, action) {
   switch (action.type) {
@@ -23,7 +22,6 @@ export default function users(state = {}, action) {
     case ADD_QUESTION:
       const questionstate = action.question;
       const authorDeets = state[questionstate.author]
-      console.log(authorDeets.questions)
 
       return       {
         ...state,

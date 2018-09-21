@@ -13,16 +13,11 @@ import Login from "./Login";
 
 
 class App extends Component {
-  state = {
-    authorized: false,
-    authUser: ""
-  };
   componentDidMount() {
     this.props.dispatch(handleInitialData());
   }
 
   render() {
-    console.log(this.props.loading);
     
     return (
       <Router>
@@ -32,8 +27,8 @@ class App extends Component {
             <Nav isAuthenticated={this.props.loading} authedUser={this.props.authedUser} dispatch={this.props.dispatch}/>
               <Switch>
                 <Route path="/" exact render={()=>(!this.props.loading ? <Questions /> : <Redirect to='/login' />)} />
-                <Route path="/question/:id" render={(props)=>(!this.props.loading ? <QuestionPage props={props}/> : <Redirect to='/login' />)} />
-                <Route path="/new" render={()=>(!this.props.loading ? <NewQuestion /> : <Redirect to='/login' />)} />
+                <Route path="/question/:question_id" render={(props)=>(!this.props.loading ? <QuestionPage props={props}/> : <Redirect to='/login' />)} />
+                <Route path="/add" render={()=>(!this.props.loading ? <NewQuestion /> : <Redirect to='/login' />)} />
                 <Route path="/leaderboard" render={()=>(!this.props.loading ? <Leaderboard /> : <Redirect to='/login' />)} />
                 <Route path="/login" exact component={Login} />
               </Switch>
@@ -45,7 +40,6 @@ class App extends Component {
 }
 
 function mapStateToProps({ authedUser,users }) {
-  console.log(users.authedUser)
   return {
     loading: authedUser === null,
     authedUser:authedUser

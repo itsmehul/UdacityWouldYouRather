@@ -19,13 +19,13 @@ class Questions extends Component {
         </div>
         <ul className="dashboard-list question">
           {this.props.answeredQs&&this.state.showAnswered === true &&
-            this.props.answeredQs.map(id => (    
-                <Question answered={true} id={id} />
+            this.props.answeredQs.map((id,i) => (    
+                <Question key={i} answered={true} id={id} />
             ))}
           {this.props.unansweredQs&&this.state.showAnswered === false &&
-            this.props.unansweredQs.map(id => (
+            this.props.unansweredQs.map((id,i) => (
               
-                <Question answered={false} id={id} />
+                <Question key={i} answered={false} id={id} />
               
             ))}
         </ul>
@@ -38,7 +38,7 @@ function mapStateToProps({ questions, authedUser, users }) {
   if(users[authedUser]){
   return {
     answeredQs: Object.keys(users[authedUser].answers).reverse(),
-    unansweredQs: Object.keys(questions) .map(qs => { if (Object.keys(users[authedUser].answers).find(aqs => qs === aqs)) { return null; } return qs; }) .filter(qs => qs !== null).sort( (a, b) => questions[b].timestamp - questions[a].timestamp ),
+    unansweredQs: Object.keys(questions).map(qs => { if (Object.keys(users[authedUser].answers).find(aqs => qs === aqs)) { return null; } return qs; }).filter(qs => qs !== null).sort((a, b) => questions[b].timestamp - questions[a].timestamp ),
   }}
   return {}
 }

@@ -10,10 +10,7 @@ class Login extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
     this.props.dispatch(setAuthedUser(this.state.authedUser));
-    console.log(this.state.authedUser !== "");
-    
     this.state.authedUser !== "" ? ( this.props.history.push(`/`) ) : null;
   };
   render() {

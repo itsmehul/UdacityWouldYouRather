@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { formatDate } from "../utils/helpers";
 import { handleSaveQuestionAnswer } from "../actions/questions";
 import { Link } from 'react-router-dom'
 
@@ -23,11 +22,9 @@ class QuestionPage extends Component {
   
 
   render() {
-    const { timestamp, optionOne, optionTwo } = this.props.question;
+    const { optionOne, optionTwo } = this.props.question;
     const { avatarURL, name, answers } = this.props.author;
     
-    console.log(this.props.answered)
-
     return (
       <div className="QP">
         <h1 className="QPtitle">{name}</h1>
@@ -64,15 +61,15 @@ class QuestionPage extends Component {
 function mapStateToProps({ questions, users, authedUser }, {props}) {
   console.log(props);
 
-  const { id } = props.match.params;
+  const { question_id } = props.match.params;
   const {answered} = props.location.state
 
   
   return {
-    question: questions[id],
-    author: users[questions[id].author],
+    question: questions[question_id],
+    author: users[questions[question_id].author],
     authedUser,
-    id,
+    id:question_id,
     answered
   };
 }

@@ -36,10 +36,6 @@ class NewQuestion extends Component {
   };
   render() {
     const { optionOne, optionTwo } = this.state;
-
-    const optionOneTextLength = 280 - optionOne.length;
-    const optionTwoTextLength = 280 - optionTwo.length;
-
     return (
       <div>
         <h3 className="center">Would you rather...</h3>

@@ -1,25 +1,37 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatDate } from "../utils/helpers";
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter } from "react-router-dom";
 
-class Question extends Component {
+const Question=(props) =>{
+  const { timestamp, optionOne } = props.question;
+  const { avatarURL, name } = props.author;
 
-  render() {
-    const { timestamp, optionOne  } = this.props.question;
-    const { avatarURL, name } = this.props.author;
-  
-    return (
-        <Link to={{ pathname:`/question/${this.props.id}`, state:{answered:`${this.props.answered}`}}}>
-        <li className="questionli">
-        <img src={avatarURL} alt={`Avatar of ${name}`} className="avatar" />
+  return (
+    <Link
+      to={{
+        pathname: `/question/${props.id}`,
+        state: { answered: `${props.answered}` }
+      }}
+    >
+      <li className="questionli">
+        <img
+          src={avatarURL}
+          alt={`Avatar of ${name}`}
+          className="avatar"
+          width="5"
+          height="auto"
+        />
         <div>{formatDate(timestamp)}</div>
         <h1>{name}</h1>
-        <h2>..{optionOne.text.substr(3, 7)}..</h2>
-        </li>
-      </Link>
-    );
-  }
+        <h2>
+          ..
+          {optionOne.text.substr(3, 7)}
+          ..
+        </h2>
+      </li>
+    </Link>
+  );
 }
 
 function mapStateToProps({ questions, users }, { id }) {

@@ -16,7 +16,7 @@ class Leaderboard extends Component {
         return (
           <div key={key} className="card">
             <div className="header">{name}</div>
-            <div className="avatar"><img width="100px" height="auto" src={avatarURL} /></div>
+            <div className="avatar"><img width="100px" height="auto" src={avatarURL} alt={avatarURL}/></div>
             <div className="optionOne">Questions Created: {questions.length}</div>
             <div className="optionTwo">Questions Answered: {Object.values(answers).length}</div>
             <div className="score">Score: {score}</div>
