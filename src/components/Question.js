@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { formatDate } from "../utils/helpers";
 import { Link, withRouter } from "react-router-dom";
 
-const Question=(props) =>{
+const Question = props => {
   const { timestamp, optionOne } = props.question;
   const { avatarURL, name } = props.author;
 
@@ -32,7 +32,7 @@ const Question=(props) =>{
       </li>
     </Link>
   );
-}
+};
 
 function mapStateToProps({ questions, users }, { id }) {
   return {

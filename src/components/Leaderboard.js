@@ -13,6 +13,7 @@ class Leaderboard extends Component {
     const Leaderboard = users.map(
       ({ avatarURL, answers, questions, name }, key) => {
         const score = Object.keys(answers).length + questions.length;
+        console.log(score);
         return (
           <div key={key} className="card">
             <div className="header">{name}</div>

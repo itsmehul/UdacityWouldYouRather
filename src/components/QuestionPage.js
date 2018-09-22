@@ -33,12 +33,14 @@ class QuestionPage extends Component {
         <h1>Would You Rather?</h1>
         {(this.state.showResults===false&&this.props.answered==="false")&&(
           <React.Fragment>
-            <form onSubmit={this.submitAns}>
+            <form>
               <input type="radio" name="ans" value="1" onChange={() => this.setState({ answer: "optionOne" })} checked={this.state.answer === "optionOne"} /> {optionOne.text}<br/>
               <input type="radio" name="ans" value="2" onChange={() => this.setState({ answer: "optionTwo" })} checked={this.state.answer === "optionTwo"} /> {optionTwo.text}<br/>
-              <button type="submit" onClick={() => this.setState({ showResults: !this.state.showResults })}>Submit Ans</button>
+              <button type="submit" onClick={(e) => {
+                this.setState({ showResults: !this.state.showResults })
+                this.submitAns(e)
+            }}>Submit Ans</button>
             </form>
-            <button onClick={() => this.setState({ showResults: !this.state.showResults })}>Show Results</button>
           </React.Fragment>)
         }
         {(answers[this.props.id]&&(this.state.showResults===true||this.props.answered==="true"))&&(

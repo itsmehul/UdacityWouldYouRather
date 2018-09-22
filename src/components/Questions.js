@@ -14,8 +14,8 @@ class Questions extends Component {
         <h3 className="questiontitle">Questions</h3>
         
         <div className="choice center">
-          <button disabled={this.state.showAnswered === false} onClick={() => this.setState({ showAnswered: false })} > Unanswered </button>
-          <button disabled={this.state.showAnswered === true} onClick={() => this.setState({ showAnswered: true })} > Answered </button>
+          <button style={this.state.showAnswered===false?{"backgroundColor":"black","color":"white"}:null} disabled={this.state.showAnswered === false} onClick={() => this.setState({ showAnswered: false })} > Unanswered </button>
+          <button style={this.state.showAnswered===true?{"backgroundColor":"black","color":"white"}:null} disabled={this.state.showAnswered === true} onClick={() => this.setState({ showAnswered: true })} > Answered </button>
         </div>
         <ul className="dashboard-list question">
           {this.props.answeredQs&&this.state.showAnswered === true &&

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleSaveQuestion } from "../actions/questions";
+import { withRouter } from "react-router-dom";
+
 
 class NewQuestion extends Component {
   state = {
@@ -33,6 +35,7 @@ class NewQuestion extends Component {
         optionOne: "",
         optionTwo: ""
     }));
+    this.state.authedUser !== "" ? ( this.props.history.push(`/`) ) : null;
   };
   render() {
     const { optionOne, optionTwo } = this.state;
@@ -49,7 +52,6 @@ class NewQuestion extends Component {
             className="txb1"
             maxLength={280}
           />
-          {/* {optionOneTextLength <= 100 && <div className="tweet-length">{optionOneTextLength}</div>} */}
           <h1 className="or">or</h1>
            <textarea
             width="200px"
@@ -60,8 +62,7 @@ class NewQuestion extends Component {
             className="txb2"
             maxLength={280}
           />
-          {/* {optionTwoTextLength <= 100 && <div className="tweet-length">{optionTwoTextLength}</div>} */}
-          <button className="newqsbutton" type="submit" disabled={optionOne === ""||optionTwo === ""}>
+          <button className="newqsbutton" disabled={optionOne === ""||optionTwo === ""}>
             Submit
           </button>
         </form>
@@ -70,4 +71,4 @@ class NewQuestion extends Component {
   }
 }
 
-export default connect()(NewQuestion);
+export default withRouter(connect()(NewQuestion));

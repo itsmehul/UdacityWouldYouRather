@@ -9,6 +9,7 @@ import QuestionPage from "./QuestionPage";
 import NewQuestion from "./NewQuestion";
 import Leaderboard from "./Leaderboard";
 import Login from "./Login";
+import ErrorPage from "./ErrorPage";
 
 
 
@@ -31,6 +32,7 @@ class App extends Component {
                 <Route path="/add" render={()=>(!this.props.loading ? <NewQuestion /> : <Redirect to='/login' />)} />
                 <Route path="/leaderboard" render={()=>(!this.props.loading ? <Leaderboard /> : <Redirect to='/login' />)} />
                 <Route path="/login" exact component={Login} />
+                <Route component={ErrorPage}/>
               </Switch>
           </div>
         </Fragment>
