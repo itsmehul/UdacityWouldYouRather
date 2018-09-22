@@ -35,7 +35,7 @@ class NewQuestion extends Component {
         optionOne: "",
         optionTwo: ""
     }));
-    this.state.authedUser !== "" ? ( this.props.history.push(`/`) ) : null;
+    if(this.state.authedUser !== "") {( this.props.history.push(`/`) ) }
   };
   render() {
     const { optionOne, optionTwo } = this.state;

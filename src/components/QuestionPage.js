@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleSaveQuestionAnswer } from "../actions/questions";
-import { Link } from 'react-router-dom'
+import { Redirect,Link } from 'react-router-dom'
 
 
 
@@ -22,6 +22,10 @@ class QuestionPage extends Component {
   
 
   render() {
+    if(this.props.error===true){
+      return(<Redirect to= "/error" />)
+    }
+
     const { optionOne, optionTwo } = this.props.question;
     const { avatarURL, name, answers } = this.props.author;
     
@@ -61,10 +65,13 @@ class QuestionPage extends Component {
 }
 
 function mapStateToProps({ questions, users, authedUser }, {props}) {
-  console.log(props);
-
   const { question_id } = props.match.params;
-  const {answered} = props.location.state
+  if(props.location.state===undefined){
+  return {
+    error: !(question_id in questions)
+  }
+}
+    const answered = props.location.state.answered
 
   
   return {

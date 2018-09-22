@@ -11,41 +11,44 @@ class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.dispatch(setAuthedUser(this.state.authedUser));
-    this.state.authedUser !== "" ? ( this.props.history.push(`/`) ) : null;
+    if (this.state.authedUser !== "") {
+      this.props.history.push(this.props.from);
+    }
   };
   render() {
-      console.log(this.props.authedUser);
-      
     return (
-        <form className="login" onSubmit={this.handleSubmit}>
-          <h1>
-            {this.state.authedUser ? this.state.authedUser :"Username"}
-          </h1>
-          <select onChange={e => this.setState({ authedUser: e.target.value })}>
-            <option value=""> select user </option>
-            {Object.keys(this.props.users).map((user, key) => (
-              <option key={key} value={user}>
-                {" "}
-                {user}{" "}
-              </option>
-            ))}
-          </select>
-          <button
-            className="btn"
-            type="submit"
-            disabled={this.state.authedUser === ""}
-          >
-            Submit
-          </button>
-        </form>
+      <form className="login" onSubmit={this.handleSubmit}>
+        <h1>{this.state.authedUser ? this.state.authedUser : "Username"}</h1>
+        <select onChange={e => this.setState({ authedUser: e.target.value })}>
+          <option value=""> select user </option>
+          {Object.keys(this.props.users).map((user, key) => (
+            <option key={key} value={user}>
+              {" "}
+              {user}{" "}
+            </option>
+          ))}
+        </select>
+        <button
+          className="btn"
+          type="submit"
+          disabled={this.state.authedUser === ""}
+        >
+          Submit
+        </button>
+      </form>
     );
   }
 }
 
-function mapStateToProps({ users, authedUser }) {
+function mapStateToProps({ users, authedUser }, props) {
+  let from = '/'
+  if(props.location.state!==undefined){
+    from = props.location.state.from}
+
   return {
     users,
-    authedUser
+    authedUser,
+    from
   };
 }
 

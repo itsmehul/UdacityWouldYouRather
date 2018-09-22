@@ -15,7 +15,7 @@ import ErrorPage from "./ErrorPage";
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialData());
+    this.props.dispatch(handleInitialData())
   }
 
   render() {
@@ -27,10 +27,10 @@ class App extends Component {
           <div className="container">
             <Nav isAuthenticated={this.props.loading} authedUser={this.props.authedUser} dispatch={this.props.dispatch}/>
               <Switch>
-                <Route path="/" exact render={()=>(!this.props.loading ? <Questions /> : <Redirect to='/login' />)} />
-                <Route path="/question/:question_id" render={(props)=>(!this.props.loading ? <QuestionPage props={props}/> : <Redirect to='/login' />)} />
-                <Route path="/add" render={()=>(!this.props.loading ? <NewQuestion /> : <Redirect to='/login' />)} />
-                <Route path="/leaderboard" render={()=>(!this.props.loading ? <Leaderboard /> : <Redirect to='/login' />)} />
+                <Route path="/" exact render={(props)=>(!this.props.loading ? <Questions /> : <Redirect to= {{ pathname: "/login", state: { from: props.location.pathname } }} />)} />
+                <Route path="/question/:question_id" render={(props)=>{return(!this.props.loading ? <QuestionPage props={props}/> : <Redirect to= {{ pathname: "/login", state: { from: props.location.pathname } }} />)}} />
+                <Route path="/add" render={(props)=>(!this.props.loading ? <NewQuestion /> : <Redirect to='/login' />)} />
+                <Route path="/leaderboard" render={(props)=>(!this.props.loading ? <Leaderboard /> : <Redirect to= {{ pathname: "/login", state: { from: props.location.pathname } }} />)} />
                 <Route path="/login" exact component={Login} />
                 <Route component={ErrorPage}/>
               </Switch>
